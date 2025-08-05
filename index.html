@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso BlatoRH Group - Uso de Dispositivos Corporativos</title>
+    <title>Curso BlatoRH Group - Uso de Dispositivos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -179,10 +179,10 @@
                     </div>
                     <div class="flex flex-col justify-center items-center p-8 bg-slate-900/50">
                         <div class="w-full max-w-md">
-                            <div class="text-center lg:hidden mb-8">
+                             <div class="text-center lg:hidden mb-8">
                                 <h2 class="text-3xl md:text-4xl font-bold text-white">BlatoRH Group</h2>
                                 <p id="login-course-title-mobile" class="mt-2 text-slate-300"></p>
-                            </div>
+                             </div>
                             <p class="text-center text-slate-300 mb-2">Ingresa tus datos para comenzar.</p>
                             <div class="text-center mb-6">
                                 <div class="inline-flex items-center bg-slate-800/50 px-3 py-1.5 rounded-full text-sm">
@@ -250,8 +250,8 @@
                  <p class="text-xl mb-8" id="result-message"></p>
                  <div id="result-summary" class="space-y-2 text-left max-w-md mx-auto mb-8"></div>
                  <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                     <button id="restart-quiz-btn" class="btn btn-secondary">Reintentar</button>
-                     <button id="diploma-btn" class="btn btn-primary hidden">Ver Diploma</button>
+                      <button id="restart-quiz-btn" class="btn btn-secondary">Reintentar</button>
+                      <button id="diploma-btn" class="btn btn-primary hidden">Ver Diploma</button>
                  </div>
             </div>
 
@@ -285,18 +285,18 @@
                  <h2 class="text-2xl font-bold mb-6 text-center">Panel de Administración</h2>
                  <button id="export-csv-btn" class="btn btn-primary mb-4">Exportar Aprobados (CSV)</button>
                  <div class="overflow-x-auto">
-                     <table class="min-w-full bg-slate-800 rounded-lg shadow-md">
-                         <thead class="bg-slate-700 text-slate-300 uppercase text-sm leading-normal">
-                             <tr>
-                                 <th class="py-3 px-6 text-left">Nombre</th>
-                                 <th class="py-3 px-6 text-left">Apellido</th>
-                                 <th class="py-3 px-6 text-left">Email</th>
-                                 <th class="py-3 px-6 text-left">Score</th>
-                                 <th class="py-3 px-6 text-left">Fecha</th>
-                             </tr>
-                         </thead>
-                         <tbody id="approved-users-table-body" class="text-slate-400 text-sm font-light"></tbody>
-                     </table>
+                      <table class="min-w-full bg-slate-800 rounded-lg shadow-md">
+                           <thead class="bg-slate-700 text-slate-300 uppercase text-sm leading-normal">
+                                <tr>
+                                     <th class="py-3 px-6 text-left">Nombre</th>
+                                     <th class="py-3 px-6 text-left">Apellido</th>
+                                     <th class="py-3 px-6 text-left">Email</th>
+                                     <th class="py-3 px-6 text-left">Score</th>
+                                     <th class="py-3 px-6 text-left">Fecha</th>
+                                </tr>
+                           </thead>
+                           <tbody id="approved-users-table-body" class="text-slate-400 text-sm font-light"></tbody>
+                      </table>
                  </div>
             </div>
 
@@ -310,57 +310,48 @@
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
         const COURSE_TITLE = "Instructivo para el Uso y Cuidado de Dispositivos Corporativos";
-        const RESOURCE_PDF_URL = 'https://raw.githubusercontent.com/BLHTR/CursoUsoyCuidadodeDispositivos/main/Instructivo%20para%20el%20Uso%20y%20Cuidado%20de%20Dispositivos%20Corporativos.pdf
+        // IMPORTANTE: Reemplazar la siguiente URL con la del nuevo PDF
+        const RESOURCE_PDF_URL = 'https://raw.githubusercontent.com/BLHTR/CursoUsoyCuidadodeDispositivos/main/Instructivo%20para%20el%20Uso%20y%20Cuidado%20de%20Dispositivos%20Corporativos.pdf'
 
         // --- DATOS DEL CURSO ---
         const chapters = [
             { 
                 title: "Asignación y Uso de Dispositivos", 
-                content: `<ul class="list-disc list-inside ml-4 space-y-3">
-                              <li><strong>Notebooks Corporativas:</strong> Todos los consultores reciben una notebook con las aplicaciones de trabajo necesarias ya preinstaladas.</li>
-                              <li><strong>Uso Personal Permitido:</strong> Se permite el uso de redes sociales y correos personales, siempre que no interfiera con las responsabilidades del trabajo.</li>
-                              <li><strong>Restricción de Software:</strong> Está prohibido descargar o instalar aplicaciones adicionales sin la autorización expresa de BlatoRH. Solo se deben usar las aplicaciones corporativas ya instaladas.</li>
-                          </ul>` 
+                content: `<p><strong>Asignación de Dispositivos:</strong> Todos los consultores reciben notebooks corporativas con las aplicaciones necesarias preinstaladas. No todos los consultores recibirán teléfonos móviles corporativos.</p>
+                          <p class="mt-4"><strong>Uso Permitido:</strong> Está permitido el uso de redes sociales y correos personales en la notebook, siempre que no interfiera con las responsabilidades laborales.</p>
+                          <p class="mt-4"><strong>Restricciones de Software:</strong> Está prohibido descargar aplicaciones adicionales sin autorización expresa de Blatorh. Las aplicaciones corporativas ya instaladas son las únicas autorizadas para su uso.</p>` 
             },
             { 
-                title: "Políticas de Seguridad Esenciales", 
-                content: `<ul class="list-disc list-inside ml-4 space-y-3">
-                              <li><strong>Software de Seguridad:</strong> Las notebooks incluyen aplicaciones de seguridad preinstaladas, por lo que no se necesita instalar software adicional.</li>
-                              <li><strong>Contraseñas:</strong> Se deben seguir las políticas generales de contraseñas de BlatoRH.</li>
-                              <li><strong>Conexión a Redes:</strong> Queda prohibido el uso de redes Wi-Fi públicas para acceder a sistemas corporativos. Se debe optar siempre por redes seguras y privadas.</li>
-                              <li><strong>VPN:</strong> BlatoRH no provee un servicio de VPN propio.</li>
-                          </ul>`
+                title: "Políticas de Seguridad", 
+                content: `<p><strong>Seguridad Preinstalada:</strong> Las notebooks vienen con aplicaciones de seguridad preinstaladas, y no se requiere el uso de cifrado adicional por parte del consultor.</p>
+                          <p class="mt-4"><strong>Contraseñas:</strong> Se deben seguir las políticas generales de Blatorh para la creación y manejo de contraseñas.</p>
+                          <p class="mt-4"><strong>Conexiones de Red:</strong> No se permite el uso de redes Wi-Fi públicas para acceder a sistemas corporativos. Se deben utilizar redes seguras o privadas. Blatorh no dispone de una VPN propia.</p>` 
             },
             { 
-                title: "Mantenimiento y Soporte", 
-                content: `<ul class="list-disc list-inside ml-4 space-y-3">
-                              <li><strong>Actualizaciones:</strong> Es responsabilidad del consultor realizar las actualizaciones de software cuando el sistema operativo o las aplicaciones lo soliciten.</li>
-                              <li><strong>Almacenamiento de Datos:</strong> Toda la información corporativa debe guardarse en el almacenamiento en la nube de Google provisto, además del espacio en la notebook.</li>
-                              <li><strong>Soporte Técnico:</strong> En caso de pérdida, robo o falla del equipo, se debe notificar inmediatamente a Seguridad y a Recursos Humanos de BlatoRH para recibir asistencia.</li>
-                          </ul>`
+                title: "Actualizaciones y Mantenimiento", 
+                content: `<p><strong>Actualizaciones de Software:</strong> Los consultores son responsables de realizar las actualizaciones de software cuando el sistema operativo o las aplicaciones lo soliciten.</p>
+                          <p class="mt-4"><strong>Almacenamiento de Datos:</strong> Los datos corporativos deben guardarse en el almacenamiento en la nube de Google provisto por la empresa, además de la capacidad local de la notebook.</p>
+                          <p class="mt-4"><strong>Soporte Técnico:</strong> En caso de falla, pérdida o robo de un dispositivo, se debe notificar de inmediato al área de Seguridad y a Recursos Humanos de Blatorh para recibir asistencia.</p>` 
             },
             { 
-                title: "Restricciones y Responsabilidades", 
-                content: `<ul class="list-disc list-inside ml-4 space-y-3">
-                              <li><strong>Dispositivos Externos:</strong> Se permite el uso de dispositivos USB, pero siempre siguiendo las políticas de seguridad de la información de BlatoRH.</li>
-                              <li><strong>Monitoreo:</strong> Aunque BlatoRH no monitorea activamente el uso de los dispositivos, cada consultor es responsable de cumplir con todas las políticas establecidas.</li>
-                          </ul>` 
+                title: "Limitaciones y Restricciones", 
+                content: `<p><strong>Instalación de Software:</strong> Queda estrictamente prohibido descargar o instalar cualquier software sin la autorización explícita de Blatorh.</p>
+                          <p class="mt-4"><strong>Uso de Dispositivos Externos:</strong> Está permitido el uso de dispositivos USB y otros medios externos, siempre que se sigan las políticas de seguridad de la información de la compañía.</p>
+                          <p class="mt-4"><strong>Monitoreo:</strong> Blatorh no realiza monitoreo activo sobre el uso de los dispositivos. Sin embargo, cada consultor es responsable de cumplir con todas las políticas establecidas.</p>`
             },
             { 
-                title: "Cuidado Físico y Devolución", 
-                content: `<ul class="list-disc list-inside ml-4 space-y-3">
-                              <li><strong>Cuidado Físico:</strong> Cada consultor es responsable de mantener en buen estado el equipo proporcionado. Se debe evitar dejarlo desatendido en lugares públicos.</li>
-                              <li><strong>Devolución:</strong> Al finalizar la relación laboral, todos los dispositivos deben ser devueltos en condiciones adecuadas, según el proceso de Offboarding de la empresa.</li>
-                          </ul>`
+                title: "Cuidado y Devolución de Dispositivos", 
+                content: `<p><strong>Cuidado Físico:</strong> Los consultores son responsables del buen estado y cuidado físico de los dispositivos. Se debe evitar dejarlos desatendidos en lugares públicos o de acceso no controlado.</p>
+                          <p class="mt-4"><strong>Devolución de Dispositivos:</strong> Todos los dispositivos deben ser devueltos en condiciones adecuadas al finalizar la relación laboral o cuando Blatorh lo solicite. Este procedimiento está detallado en el proceso de Offboarding.</p>`
             }
         ];
 
         const quizQuestions = [
-            { question: "¿Qué se debe hacer si se necesita instalar un nuevo programa en la notebook?", options: ["Instalarlo directamente si es para uso laboral.", "Solicitar autorización explícita a BlatoRH antes de instalar.", "Usar una cuenta personal para descargarlo.", "Está totalmente prohibido instalar cualquier software."], answer: 1 },
-            { question: "¿Está permitido usar una red Wi-Fi de un café para trabajar con información corporativa?", options: ["Sí, si la conexión es rápida.", "No, está prohibido el uso de Wi-Fi pública para acceder a sistemas corporativos.", "Solo si se usa la VPN de la empresa.", "Sí, no existen restricciones sobre el tipo de red Wi-Fi."], answer: 1 },
-            { question: "En caso de robo de la notebook, ¿a quién se debe notificar primero?", options: ["Al cliente para el que se está trabajando.", "A la policía únicamente.", "Al área de Seguridad y Recursos Humanos de BlatoRH.", "Al departamento de finanzas para gestionar el seguro."], answer: 2 },
-            { question: "¿Dónde debe guardarse principalmente la información corporativa?", options: ["En un disco duro externo personal.", "Únicamente en el escritorio de la notebook.", "En el almacenamiento en la nube de Google proporcionado por la empresa.", "En pendrives o dispositivos USB."], answer: 2 },
-            { question: "Al finalizar la relación laboral con BlatoRH, ¿qué se debe hacer con la notebook?", options: ["Se puede conservar como parte de la liquidación final.", "Se debe formatear y luego devolver.", "Se debe devolver en condiciones adecuadas según el proceso de Offboarding.", "Se puede vender para recuperar costos."], answer: 2 }
+            { question: "¿Qué acción está estrictamente prohibida sin autorización expresa de Blatorh?", options: ["Usar redes sociales personales.", "Guardar archivos en la nube de Google.", "Descargar e instalar aplicaciones adicionales.", "Usar un dispositivo USB."], answer: 2 },
+            { question: "¿Qué tipo de red Wi-Fi no está permitida para acceder a sistemas corporativos?", options: ["La red Wi-Fi de la oficina.", "Una red Wi-Fi pública.", "La red del domicilio del consultor.", "Cualquier red que no sea de Blatorh."], answer: 1 },
+            { question: "En caso de robo o pérdida de la notebook, ¿a quién se debe notificar de inmediato?", options: ["Al equipo de Finanzas.", "Solamente a Recursos Humanos.", "Al área de Seguridad y a Recursos Humanos.", "Al director de la compañía."], answer: 2 },
+            { question: "¿Dónde deben guardarse principalmente los datos corporativos?", options: ["En un disco duro externo personal.", "En el escritorio de la notebook.", "En el almacenamiento en la nube de Google proporcionado.", "En una cuenta de Dropbox personal."], answer: 2 },
+            { question: "¿Qué sucede con los dispositivos corporativos al finalizar la relación laboral?", options: ["El consultor puede comprarlos a un precio reducido.", "Deben ser devueltos en condiciones adecuadas.", "Se pueden transferir a otro consultor directamente.", "Se deben formatear y luego devolver."], answer: 1 }
         ];
         
         // --- ELEMENTOS DEL DOM ---
